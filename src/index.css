@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Design tokens — yellow (gold) + blue (navy) on dominant white.
+   These generate Tailwind utilities, e.g. bg-cream, text-navy,
+   border-gold, font-serif, etc.
+---------------------------------------------------------------- */
+@theme {
+  /* Backgrounds */
+  --color-cream: #fdfcf9; /* warm white — dominant background */
+  --color-paper: #ffffff; /* pure white cards */
+
+  /* Blue family */
+  --color-navy: #1f3a5f; /* headings / primary */
+  --color-blue: #3e6ea5; /* links / secondary accents */
+  --color-sky: #dce8f3; /* soft section tints */
+
+  /* Yellow / gold family */
+  --color-gold: #e2b33c; /* primary accent — buttons, rules */
+  --color-gold-deep: #c8982a; /* hover / pressed */
+  --color-butter: #f6e7b4; /* soft highlight */
+
+  /* Neutrals */
+  --color-ink: #20262e; /* body text */
+  --color-muted: #6b7480; /* secondary text */
+  --color-line: #ece8df; /* hairline borders */
+
+  /* Type */
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------------------------------------------------------------
+   Base styles
+---------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* offset anchored sections for the sticky header */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  color: var(--color-navy);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Reusable bits */
+.section-pad {
+  padding-inline: 1.5rem;
+  padding-block: 4.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-block: 7rem;
+  }
+}
