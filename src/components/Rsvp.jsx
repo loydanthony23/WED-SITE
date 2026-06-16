@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, Heart, Plus, X, PartyPopper, AlertCircle } from "lucide-react";
+import { Check, Heart, X, PartyPopper, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { config } from "../lib/config";
 import { submitRsvp } from "../lib/submitRsvp";
@@ -12,7 +12,6 @@ const labelCls =
 
 export default function Rsvp() {
   const { rsvp, couple } = config;
-  const blankGuest = () => ({ name: "", meal: rsvp.mealOptions[0] });
 
   const [form, setForm] = useState({
     primaryName: "",
@@ -25,19 +24,11 @@ export default function Rsvp() {
     message: "",
     company: "", // honeypot — must stay empty
   });
-  const [guests, setGuests] = useState([]); // additional guests beyond primary
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
 
   const set = (key) => (e) => setForm({ ...form, [key]: e.target.value });
   const attending = form.attending === "yes";
-  const maxAdditional = Math.max(0, (rsvp.maxPartySize || 1) - 1);
-
-  const addGuest = () =>
-    guests.length < maxAdditional && setGuests([...guests, blankGuest()]);
-  const removeGuest = (i) => setGuests(guests.filter((_, idx) => idx !== i));
-  const updateGuest = (i, key, value) =>
-    setGuests(guests.map((g, idx) => (idx === i ? { ...g, [key]: value } : g)));
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -56,29 +47,17 @@ export default function Rsvp() {
       setErrorMsg("Please let us know if you can make it.");
       return;
     }
-    if (attending && guests.some((g) => !g.name.trim())) {
-      setErrorMsg("Please enter a name for each guest (or remove empty ones).");
-      return;
-    }
-
-    const allNames = attending
-      ? [form.primaryName.trim(), ...guests.map((g) => g.name.trim())]
-      : [];
-    const meals = attending
-      ? [
-          `${form.primaryName.trim()}: ${form.primaryMeal}`,
-          ...guests.map((g) => `${g.name.trim()}: ${g.meal}`),
-        ]
-      : [];
 
     const payload = {
       primaryName: form.primaryName.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
       attending: attending ? "Yes" : "No",
-      partySize: attending ? allNames.length : 0,
-      guestNames: allNames.join(", "),
-      mealPreferences: meals.join("; "),
+      partySize: attending ? 1 : 0,
+      guestNames: attending ? form.primaryName.trim() : "",
+      mealPreferences: attending
+        ? `${form.primaryName.trim()}: ${form.primaryMeal}`
+        : "",
       dietary: form.dietary.trim(),
       song: form.song.trim(),
       message: form.message.trim(),
@@ -241,60 +220,6 @@ export default function Rsvp() {
                         ))}
                       </select>
                     </div>
-
-                    {/* Additional guests */}
-                    {guests.map((g, i) => (
-                      <div
-                        key={i}
-                        className="rounded-lg border border-line bg-cream/60 p-4"
-                      >
-                        <div className="mb-3 flex items-center justify-between">
-                          <span className="font-sans text-xs uppercase tracking-widest text-gold-deep">
-                            Guest {i + 2}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => removeGuest(i)}
-                            className="flex items-center gap-1 font-sans text-xs text-muted hover:text-navy"
-                          >
-                            <X size={13} /> Remove
-                          </button>
-                        </div>
-                        <div className="grid gap-3 sm:grid-cols-2">
-                          <input
-                            className={inputCls}
-                            value={g.name}
-                            onChange={(e) =>
-                              updateGuest(i, "name", e.target.value)
-                            }
-                            placeholder="Guest full name"
-                          />
-                          <select
-                            className={inputCls}
-                            value={g.meal}
-                            onChange={(e) =>
-                              updateGuest(i, "meal", e.target.value)
-                            }
-                          >
-                            {rsvp.mealOptions.map((m) => (
-                              <option key={m} value={m}>
-                                {m}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                    ))}
-
-                    {guests.length < maxAdditional && (
-                      <button
-                        type="button"
-                        onClick={addGuest}
-                        className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-gold/60 py-3 font-sans text-xs uppercase tracking-widest text-gold-deep transition-colors hover:bg-butter/30"
-                      >
-                        <Plus size={15} /> Add a guest
-                      </button>
-                    )}
 
                     {/* Dietary */}
                     <div>

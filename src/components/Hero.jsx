@@ -45,7 +45,7 @@ export default function Hero() {
       <motion.p
         {...fadeUp}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="font-sans text-xs uppercase tracking-[0.32em] text-gold-deep sm:text-sm"
+        className="font-sans text-xs uppercase tracking-[0.32em] text-navy sm:text-sm"
       >
         {hero.kicker}
       </motion.p>

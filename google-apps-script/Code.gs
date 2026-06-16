@@ -31,8 +31,10 @@ function doPost(e) {
     const data = JSON.parse(e.postData.contents);
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
 
-    // Create the header row the first time.
-    if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
+    // Make sure the header row exists AND matches the current columns. This
+    // self-heals if columns are added later (e.g. "Party Size"), so the labels
+    // never drift out of sync with the values below them.
+    ensureHeaders(sheet);
 
     sheet.appendRow([
       new Date(),
@@ -82,6 +84,21 @@ function doPost(e) {
 // Opening the /exec URL in a browser hits this — a simple health check.
 function doGet() {
   return json({ ok: true, message: "RSVP endpoint is live." });
+}
+
+// Writes the header row if it's empty or doesn't match HEADERS exactly.
+function ensureHeaders(sheet) {
+  const width = HEADERS.length;
+  const range = sheet.getRange(1, 1, 1, width);
+  const current = sheet.getLastRow() === 0 ? [] : range.getValues()[0];
+  const matches = HEADERS.every((h, i) => current[i] === h);
+  if (!matches) range.setValues([HEADERS]);
+}
+
+// Run this once from the editor (pick "setupHeaders" → Run) to repair the
+// header row on an existing sheet without waiting for a new submission.
+function setupHeaders() {
+  ensureHeaders(SpreadsheetApp.getActiveSpreadsheet().getSheets()[0]);
 }
 
 function json(obj) {
