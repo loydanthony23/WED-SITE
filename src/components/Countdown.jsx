@@ -11,7 +11,7 @@ function getTimeLeft(target) {
   };
 }
 
-export default function Countdown({ dateISO }) {
+export default function Countdown({ dateISO, light = false }) {
   const target = new Date(dateISO).getTime();
   const [t, setT] = useState(() => getTimeLeft(target));
 
@@ -22,7 +22,11 @@ export default function Countdown({ dateISO }) {
 
   if (!t) {
     return (
-      <p className="font-serif text-2xl text-navy">The big day is here! 🎉</p>
+      <p
+        className={`font-serif text-2xl ${light ? "text-white" : "text-navy"}`}
+      >
+        The big day is here! 🎉
+      </p>
     );
   }
 
@@ -37,10 +41,18 @@ export default function Countdown({ dateISO }) {
     <div className="flex items-start justify-center gap-4 sm:gap-7">
       {units.map((u) => (
         <div key={u.label} className="flex flex-col items-center">
-          <span className="font-serif text-4xl tabular-nums text-navy sm:text-5xl">
+          <span
+            className={`font-serif text-4xl tabular-nums sm:text-5xl ${
+              light ? "text-white" : "text-navy"
+            }`}
+          >
             {String(u.value).padStart(2, "0")}
           </span>
-          <span className="mt-1.5 font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-navy/75 sm:text-xs">
+          <span
+            className={`mt-1.5 font-sans text-[11px] font-medium uppercase tracking-[0.18em] sm:text-xs ${
+              light ? "text-white/70" : "text-navy/75"
+            }`}
+          >
             {u.label}
           </span>
         </div>

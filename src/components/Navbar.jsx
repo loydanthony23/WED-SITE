@@ -13,8 +13,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const { partnerA, partnerB } = config.couple;
-  const monogram = `${partnerA[0]} & ${partnerB[0]}`;
+  const { partnerA, partnerB, navIcon } = config.couple;
+
+  // At the top of the page the navbar sits over the dark hero photo, so
+  // switch to light text for contrast. Once scrolled (or the mobile menu
+  // is open) the bar turns cream and we go back to dark text.
+  const onDark = !scrolled && !open;
 
   return (
     <header
@@ -23,8 +27,16 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <a href="#top" className="font-serif text-2xl tracking-wide text-navy">
-          {monogram}
+        <a href="#top" className="flex items-center" aria-label="Home">
+          {/* icon is white — show as-is over the dark hero, darken it once
+              the bar turns cream so it stays visible. */}
+          <img
+            src={navIcon}
+            alt={`${partnerA} & ${partnerB}`}
+            className={`h-9 w-auto transition-[filter] sm:h-10 ${
+              onDark ? "" : "brightness-0"
+            }`}
+          />
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -32,7 +44,9 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="font-sans text-sm uppercase tracking-widest text-ink/80 transition-colors hover:text-gold-deep"
+                className={`font-sans text-sm uppercase tracking-widest transition-colors hover:text-gold ${
+                  onDark ? "text-white/85" : "text-ink/80 hover:text-gold-deep"
+                }`}
               >
                 {l.label}
               </a>
@@ -42,13 +56,19 @@ export default function Navbar() {
 
         <a
           href="#rsvp"
-          className="hidden rounded-full bg-navy px-5 py-2 font-sans text-xs uppercase tracking-widest text-white transition-colors hover:bg-blue md:inline-block"
+          className={`hidden rounded-full px-5 py-2 font-sans text-xs uppercase tracking-widest transition-colors md:inline-block ${
+            onDark
+              ? "border border-white/50 text-white hover:bg-white hover:text-navy"
+              : "bg-navy text-white hover:bg-blue"
+          }`}
         >
           RSVP
         </a>
 
         <button
-          className="text-navy md:hidden"
+          className={`transition-colors md:hidden ${
+            onDark ? "text-white" : "text-navy"
+          }`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}

@@ -9,8 +9,10 @@ export const config = {
         partnerA: "Loyd",
         partnerB: "Sharah",
         hashtag: "#LoydAndSharah",
-        // Monogram logo shown in the navbar + hero (file lives in /public).
+        // White monogram lockup shown on the dark hero (file in /public).
         logo: "/monogram.png",
+        // Compact white "LS" mark used in the navbar.
+        navIcon: "/icon-nav.png",
     },
 
     // ---- The big day ------------------------------------------------
@@ -31,6 +33,29 @@ export const config = {
         subline: "request the pleasure of your company as they say “I do”",
         // Optional hero photo URL. Leave "" for a clean, type-only hero.
         image: "/hero-2.avif",
+    },
+
+    // ---- Welcome gate ----------------------------------------------
+    // The opening overlay guests tap to enter. Their click is what lets
+    // the music start (browsers require a tap first). Set `enabled: false`
+    // to skip it.
+    welcome: {
+        enabled: true,
+        kicker: "You're invited to celebrate",
+        button: "Tap to open your invitation",
+        note: "Best enjoyed with the sound on",
+    },
+
+    // ---- Background music ------------------------------------------
+    // Optional looping music (file lives in /public). Browsers block
+    // audio with sound until the guest interacts with the page, so it
+    // tries to start on load and otherwise begins on the first
+    // click/scroll/keypress. Guests can mute via the floating button.
+    // Set `src: ""` to turn music off entirely.
+    music: {
+        src: "/musicbg.mp3",
+        autoPlay: true,
+        volume: 0.4,
     },
 
     // ---- Our Story --------------------------------------------------

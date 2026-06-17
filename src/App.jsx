@@ -9,10 +9,14 @@ import Faq from "./components/Faq";
 import Travel from "./components/Travel";
 import Rsvp from "./components/Rsvp";
 import Footer from "./components/Footer";
+import MusicPlayer from "./components/MusicPlayer";
+import WelcomeGate from "./components/WelcomeGate";
 
 export default function App() {
   return (
     <div id="top" className="overflow-x-clip">
+      <WelcomeGate />
+      <MusicPlayer />
       <Navbar />
       <main>
         <Hero />
