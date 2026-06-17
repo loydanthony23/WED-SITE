@@ -5,12 +5,17 @@ const ENDPOINT = import.meta.env.VITE_RSVP_ENDPOINT;
 // "simple request" and skips the CORS preflight that Apps Script can't answer.
 export async function submitRsvp(data) {
   if (!ENDPOINT) {
-    // Dev fallback: lets you test the UI before the endpoint is configured.
-    console.warn(
-      "VITE_RSVP_ENDPOINT is not set — simulating a successful submit.",
-    );
-    await new Promise((r) => setTimeout(r, 900));
-    return { ok: true, simulated: true };
+    // Only fake success in local dev so you can test the UI. In production a
+    // missing endpoint is a real misconfiguration — surface it loudly instead
+    // of silently showing a fake "Thank you!" while sending nothing.
+    if (import.meta.env.DEV) {
+      console.warn(
+        "VITE_RSVP_ENDPOINT is not set — simulating a successful submit (dev only).",
+      );
+      await new Promise((r) => setTimeout(r, 900));
+      return { ok: true, simulated: true };
+    }
+    throw new Error("RSVP endpoint is not configured.");
   }
 
   const res = await fetch(ENDPOINT, {
