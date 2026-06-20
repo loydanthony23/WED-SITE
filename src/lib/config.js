@@ -32,7 +32,7 @@ export const config = {
         kicker: "Together with their families",
         subline: "invite you to witness and celebrate the beginning of their forever",
         // Optional hero photo URL. Leave "" for a clean, type-only hero.
-        image: "/hero-2.avif",
+        image: "/aip.png",
     },
 
     // ---- Welcome gate ----------------------------------------------
