@@ -54,7 +54,7 @@ export const config = {
     // Set `src: ""` to turn music off entirely.
     music: {
         src: "/musicbg2.mp3",
-        autoPlay: true,
+        autoPlay: false,
         volume: 0.4,
     },
 

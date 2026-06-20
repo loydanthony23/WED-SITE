@@ -4,13 +4,22 @@ import { Volume2, VolumeX } from "lucide-react";
 import { config } from "../lib/config";
 
 export default function MusicPlayer() {
-  const { music } = config;
+  const { music, welcome } = config;
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !music?.src) return;
+
+    // When the welcome gate is up it owns the guest's first gesture and
+    // fires "wed:enter" on tap. The gate is always the entry point in
+    // that case, so we must NOT try to autoplay on load — on domains the
+    // browser already trusts (high media-engagement, e.g. production),
+    // an eager play() would succeed and start the music before the guest
+    // opens the invitation. Locally that play() is blocked, which is why
+    // the behaviour looked correct there but not in prod.
+    const gateEnabled = welcome?.enabled !== false;
 
     const targetVol = music.volume ?? 0.4;
     audio.volume = targetVol;
@@ -63,7 +72,9 @@ export default function MusicPlayer() {
     const onEnter = () => tryPlay();
     window.addEventListener("wed:enter", onEnter);
 
-    if (music.autoPlay !== false) {
+    if (music.autoPlay !== false && !gateEnabled) {
+      // No gate: fall back to starting on the guest's first interaction,
+      // and optimistically try right away in case autoplay is permitted.
       events.forEach((e) =>
         window.addEventListener(e, onGesture, { passive: true })
       );
@@ -77,7 +88,7 @@ export default function MusicPlayer() {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
     };
-  }, [music]);
+  }, [music, welcome]);
 
   if (!music?.src) return null;
 
