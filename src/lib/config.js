@@ -30,7 +30,7 @@ export const config = {
     // ---- Hero -------------------------------------------------------
     hero: {
         kicker: "Together with their families",
-        subline: "request the pleasure of your company as they say “I do”",
+        subline: "invite you to witness and celebrate the beginning of their forever",
         // Optional hero photo URL. Leave "" for a clean, type-only hero.
         image: "/hero-2.avif",
     },
@@ -53,7 +53,7 @@ export const config = {
     // click/scroll/keypress. Guests can mute via the floating button.
     // Set `src: ""` to turn music off entirely.
     music: {
-        src: "/musicbg.mp3",
+        src: "/musicbg2.mp3",
         autoPlay: true,
         volume: 0.4,
     },
@@ -158,13 +158,13 @@ export const config = {
     ],
 
     // ---- Travel & stay ---------------------------------------------
-    travel: {
-        note: "Coming from out of town? Here are a few places to stay nearby.",
-        hotels: [
-            { name: "Taal Vista Hotel", info: "≈ 10 min from the venue", url: "#" },
-            { name: "Escala Tagaytay", info: "≈ 15 min from the venue", url: "#" },
-        ],
-    },
+    // travel: {
+    //     note: "Coming from out of town? Here are a few places to stay nearby.",
+    //     hotels: [
+    //         { name: "Taal Vista Hotel", info: "≈ 10 min from the venue", url: "#" },
+    //         { name: "Escala Tagaytay", info: "≈ 15 min from the venue", url: "#" },
+    //     ],
+    // },
 
     // ---- RSVP -------------------------------------------------------
     rsvp: {
@@ -175,7 +175,7 @@ export const config = {
 
     // ---- Contact / footer ------------------------------------------
     contact: {
-        email: "loydmit@gmail.com",
+        email: "loydsharah.site",
         phone: "+63 9658306989",
     },
 };
