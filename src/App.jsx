@@ -6,7 +6,6 @@ import EventDetails from "./components/EventDetails";
 import Schedule from "./components/Schedule";
 import Registry from "./components/Registry";
 import Faq from "./components/Faq";
-import Travel from "./components/Travel";
 import Rsvp from "./components/Rsvp";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
@@ -26,7 +25,6 @@ export default function App() {
         <Schedule />
         <Registry />
         <Faq />
-        <Travel />
         <Rsvp />
       </main>
       <Footer />

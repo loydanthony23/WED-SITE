@@ -44,17 +44,49 @@ export default function EventDetails() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mx-auto mt-6 flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-line bg-paper px-8 py-7 text-center shadow-sm sm:flex-row sm:text-left">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-butter text-gold-deep">
-              <Shirt size={22} />
-            </span>
-            <div>
-              <h3 className="font-serif text-xl text-navy">
+          <div className="mx-auto mt-6 max-w-3xl overflow-hidden rounded-2xl border border-line bg-paper shadow-sm md:grid md:grid-cols-2">
+            {/* Clipart of a couple in formal attire */}
+            <div className="flex items-center justify-center bg-linear-to-br from-sky/60 to-butter/50 p-8">
+              <img
+                src={details.dressCode.image}
+                alt="Illustration of a couple in formal wedding attire"
+                loading="lazy"
+                className="h-56 w-full object-contain md:h-72"
+              />
+            </div>
+
+            {/* Details + color palette */}
+            <div className="flex flex-col px-8 py-8 text-center sm:text-left">
+              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-butter text-gold-deep sm:mx-0">
+                <Shirt size={22} />
+              </span>
+              <h3 className="mt-4 font-serif text-2xl text-navy">
                 {details.dressCode.title}
               </h3>
-              <p className="mt-1 font-sans text-sm text-muted">
+              <p className="mt-2 font-sans text-sm text-muted">
                 {details.dressCode.text}
               </p>
+
+              <p className="mt-6 font-sans text-xs uppercase tracking-[0.2em] text-gold-deep">
+                Our Palette
+              </p>
+              <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-3 sm:justify-start">
+                {details.dressCode.palette.map((color) => (
+                  <li
+                    key={color.hex}
+                    className="flex flex-col items-center gap-1.5"
+                  >
+                    <span
+                      className="h-11 w-11 rounded-full border border-line shadow-sm"
+                      style={{ backgroundColor: color.hex }}
+                      aria-hidden="true"
+                    />
+                    <span className="font-sans text-[10px] uppercase tracking-wide text-muted">
+                      {color.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Reveal>

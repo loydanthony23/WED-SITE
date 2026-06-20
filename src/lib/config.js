@@ -20,11 +20,11 @@ export const config = {
     // timezone offset (+08:00 = Philippine time). The *Label fields are
     // what guests actually read, so write them however you like.
     event: {
-        dateISO: "2026-12-12T15:00:00+08:00",
-        dateLabel: "December 12, 2026",
+        dateISO: "2026-09-19T15:00:00+08:00",
+        dateLabel: "September 19, 2026",
         dayLabel: "Saturday",
-        timeLabel: "3:00 in the afternoon",
-        cityLabel: "Tagaytay, Philippines",
+        timeLabel: "10:30 in the morning",
+        cityLabel: "Cabanglasan, Bukidnon",
     },
 
     // ---- Hero -------------------------------------------------------
@@ -62,14 +62,17 @@ export const config = {
     story: {
         intro: "Every love story is beautiful, but ours is our favorite. Here's a little of how we got here.",
         paragraphs: [
-            "We met on an ordinary afternoon that turned out to be anything but. One conversation became a thousand, and somewhere along the way, the two of us became us.",
+            "We first met in 2014 as college classmates. What started as casual introductions slowly turned into friendship—comfortable, effortless, and unexpectedly meaningful. Even then, there was something familiar about each other, like we were meant to stay in each other’s orbit.",
+            "After graduating, life took us in different directions, but it never truly pulled us apart. Somehow, we found our way back to each other again. This second chance meant everything. We didn’t let it pass—we chose each other, fully and intentionally.",
+            "Now, after all the years, distance, and rediscovery, we’re stepping into our next chapter—one we’ve been building toward all along—and we’re so happy to share it with you., and somewhere along the way, the two of us became us.",
             "Years, adventures, and countless cups of coffee later, we're ready for our greatest adventure yet — and we'd love for you to be there when we begin it.",
         ],
         timeline: [
-            { year: "2019", title: "How we met", text: "A chance meeting that we still can't stop talking about." },
-            { year: "2022", title: "The first trip", text: "We packed two bags and came back as a team." },
-            { year: "2025", title: "The proposal", text: "A quiet question, an easy yes, happy tears all around." },
-            { year: "2026", title: "The wedding", text: "And now — the part with you in it." },
+            { year: "2019", title: "How we met", text: "College classmates who slowly became close friends, without even realizing where it would lead." },
+            { year: "2022", title: "Finding our way back", text: "Life paused us for a while, but not for long. We met again, and this time, we didn’t let go." },
+
+            { year: "2023", title: "Endless roads", text: "Long drives, random stops, and memories made on the road—our favorite kind of adventure." },
+            { year: "2026", title: "The wedding", text: "And now, the beginning of forever—with you there to witness it." },
         ],
     },
 
@@ -90,21 +93,33 @@ export const config = {
     details: {
         ceremony: {
             title: "The Ceremony",
-            time: "3:00 PM",
-            venue: "Our Lady of Lourdes Church",
-            address: "123 Aguinaldo Hwy, Tagaytay City, Cavite",
-            mapUrl: "https://maps.google.com/?q=Tagaytay+City",
+            time: "10:30 AM",
+            venue: "Santo Niño Parish Church",
+            address: "Poblacion, Cabanglasan, Bukidnon",
+            mapUrl: "https://maps.app.goo.gl/V4n26SL3f2NYFMSUA",
         },
         reception: {
             title: "The Reception",
-            time: "5:00 PM",
-            venue: "The Garden Pavilion",
-            address: "456 Ridge Rd, Tagaytay City, Cavite",
-            mapUrl: "https://maps.google.com/?q=Tagaytay+City",
+            time: "12:00 PM",
+            venue: "MMAD Lodging and Catering Services",
+            address: "Poblacion, Cabanglasan, Bukidnon",
+            mapUrl: "https://maps.app.goo.gl/fFrcDMM8V6YY9bNw7",
         },
         dressCode: {
             title: "Dress Code",
-            text: "Formal / Semi-formal. We'd love to see you in shades of blue and soft neutrals.",
+            text: "Formal / Semi-formal attire. We'd love to see our guests dressed in our wedding colors — soft powder blue and warm yellow.",
+            // Clipart of a couple in formal attire (transparent PNG in /public).
+            image: "/dresscode-couple.png",
+            // Color palette swatches. First three are powder blue, last three
+            // are yellow — edit the hex values and names to taste.
+            palette: [
+                { name: "Powder Mist", hex: "#E8F1FA" },
+                { name: "Powder Blue", hex: "#C2DBEE" },
+                { name: "Sky Blue", hex: "#93BAD9" },
+                { name: "Soft Butter", hex: "#FBF1C7" },
+                { name: "Honey", hex: "#F2D785" },
+                { name: "Goldenrod", hex: "#E2B33C" },
+            ],
         },
     },
 
@@ -118,20 +133,27 @@ export const config = {
         { time: "7:00 PM", title: "Dancing", text: "The dance floor opens — bring your moves.", icon: "music" },
     ],
 
-    // ---- Registry ---------------------------------------------------
+    // ---- Registry / Gifts -------------------------------------------
     registry: {
-        note: "Your presence is the only present we need. But if you wish to give a gift, a contribution toward our new home and honeymoon would mean the world.",
-        links: [
-            { label: "Honeymoon Fund", url: "#" },
-            { label: "Our Registry", url: "#" },
+        note: "Your presence is the only present we need. But if you wish to bless us with a gift, you may send it through any of the QR codes below.",
+        // Gift QR codes. Each is scannable by GCash, Maya, or any bank app
+        // (they all follow the QR Ph standard). To set yours up:
+        //   1. In each app, open your "Receive Money" / "My QR" screen and
+        //      save the QR image (leave the amount blank so guests choose).
+        //   2. Drop the files into /public and point `image` at them.
+        //   3. Replace the placeholder accountName / accountNumber below.
+        qrCodes: [
+            { name: "GCash", image: "/gcash.png", accountName: "Loyd & Sharah", accountNumber: "0917 000 0000" },
+            { name: "GoTyme Bank", image: "/gtm.png", accountName: "Loyd & Sharah", accountNumber: "0000 0000 0000" },
+            { name: "Landbank", image: "/lbp.png", accountName: "Loyd & Sharah", accountNumber: "0000 0000 0000" },
         ],
     },
 
     // ---- FAQ --------------------------------------------------------
     faq: [
-        { q: "Can I bring a plus-one?", a: "Your invitation will indicate how many seats are reserved for you. Please RSVP for exactly that many guests." },
-        { q: "Are kids welcome?", a: "We love your little ones! Please let us know in your RSVP so we can plan accordingly." },
-        { q: "What time should I arrive?", a: "Please arrive by 2:30 PM so we can begin the ceremony promptly at 3:00 PM." },
+        { q: "Can I bring a plus-one?", a: "To help us keep our celebration intimate and accommodate all invited guests comfortably, attendance is limited to the person(s) specifically named on the invitation. We kindly ask that only those included in the invitation attend. Thank you for your understanding and support." },
+        { q: "Are kids welcome?", a: "If your invitation includes your children, we would be delighted to celebrate with them. Please include all attending family members in your RSVP so we can prepare accordingly." },
+        { q: "What time should I arrive?", a: "Please arrive by 10:00 AM so we can begin the ceremony promptly at 10:30 AM." },
         { q: "Is there parking?", a: "Yes, free parking is available at both the church and the reception venue." },
     ],
 
@@ -146,15 +168,15 @@ export const config = {
 
     // ---- RSVP -------------------------------------------------------
     rsvp: {
-        deadline: "November 1, 2026",
+        deadline: "September 1, 2026",
         mealOptions: ["Chicken", "Beef", "Fish", "Vegetarian"],
         maxPartySize: 6,
     },
 
     // ---- Contact / footer ------------------------------------------
     contact: {
-        email: "hello@example.com",
-        phone: "+63 900 000 0000",
+        email: "loydmit@gmail.com",
+        phone: "+63 9658306989",
     },
 };
 

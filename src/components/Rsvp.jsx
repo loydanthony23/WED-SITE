@@ -20,8 +20,6 @@ export default function Rsvp() {
     attending: "", // "yes" | "no"
     primaryMeal: rsvp.mealOptions[0],
     dietary: "",
-    song: "",
-    message: "",
     company: "", // honeypot — must stay empty
   });
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
@@ -59,8 +57,6 @@ export default function Rsvp() {
         ? `${form.primaryName.trim()}: ${form.primaryMeal}`
         : "",
       dietary: form.dietary.trim(),
-      song: form.song.trim(),
-      message: form.message.trim(),
     };
 
     try {
@@ -234,38 +230,9 @@ export default function Rsvp() {
                         placeholder="e.g. nut allergy, vegan"
                       />
                     </div>
-
-                    {/* Song */}
-                    <div>
-                      <label className={labelCls} htmlFor="song">
-                        Song Request
-                      </label>
-                      <input
-                        id="song"
-                        className={inputCls}
-                        value={form.song}
-                        onChange={set("song")}
-                        placeholder="A song to get you on the dance floor"
-                      />
-                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-
-              {/* Message */}
-              <div>
-                <label className={labelCls} htmlFor="message">
-                  A Note for the Couple
-                </label>
-                <textarea
-                  id="message"
-                  rows={3}
-                  className={`${inputCls} resize-none`}
-                  value={form.message}
-                  onChange={set("message")}
-                  placeholder="Share your well-wishes…"
-                />
-              </div>
 
               {/* Honeypot (hidden from humans) */}
               <input
