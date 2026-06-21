@@ -143,9 +143,9 @@ export const config = {
         //   2. Drop the files into /public and point `image` at them.
         //   3. Replace the placeholder accountName / accountNumber below.
         qrCodes: [
-            { name: "GCash", image: "/gcash.png", accountName: "Loyd & Sharah", accountNumber: "0917 000 0000" },
-            { name: "GoTyme Bank", image: "/gtm.png", accountName: "Loyd & Sharah", accountNumber: "0000 0000 0000" },
-            { name: "Landbank", image: "/lbp.png", accountName: "Loyd & Sharah", accountNumber: "0000 0000 0000" },
+            { name: "GCash", image: "/gcash.png", color: "#007cff", accountName: "Loyd & Sharah", accountNumber: "0917 000 0000" },
+            { name: "GoTyme Bank", image: "/gtm.png", color: "#00F5FA", accountName: "Loyd & Sharah", accountNumber: "0000 0000 0000" },
+            { name: "Landbank", image: "/lbp.png", color: "#078a3d", accountName: "Loyd & Sharah", accountNumber: "0000 0000 0000" },
         ],
     },
 

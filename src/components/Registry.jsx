@@ -1,4 +1,5 @@
-import { Gift } from "lucide-react";
+import { useState } from "react";
+import { Eye, EyeOff, Gift } from "lucide-react";
 import { config } from "../lib/config";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
@@ -13,6 +14,13 @@ function qrPlaceholder(name) {
 
 export default function Registry() {
   const { registry } = config;
+  // Tracks which QR codes are revealed. Hidden by default so the codes only
+  // show when a guest taps the eye icon for that card.
+  const [revealed, setRevealed] = useState({});
+
+  const toggle = (name) =>
+    setRevealed((prev) => ({ ...prev, [name]: !prev[name] }));
+
   return (
     <section id="registry" className="section-pad bg-paper">
       <div className="mx-auto max-w-2xl text-center">
@@ -24,37 +32,61 @@ export default function Registry() {
           <p className="mx-auto mt-6 max-w-xl font-sans text-sm leading-relaxed text-muted sm:text-base">
             {registry.note}
           </p>
-          {registry.qrCodes?.length > 0 && (
-            <>
-              <div className="mx-auto mt-8 grid max-w-md gap-4 sm:grid-cols-3">
-                {registry.qrCodes.map((qr) => (
-                  <div
-                    key={qr.name}
-                    className="flex flex-col items-center rounded-xl border border-line/70 bg-cream p-3"
-                  >
-                    <p className="font-sans text-[0.65rem] uppercase tracking-[0.18em] text-gold-deep">
-                      {qr.name}
-                    </p>
-                    <img
-                      src={qr.image}
-                      alt={`${qr.name} QR code for sending a gift`}
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = qrPlaceholder(qr.name);
-                      }}
-                      className="mt-2.5 h-24 w-24 rounded-md bg-white object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 font-sans text-xs uppercase tracking-[0.15em] text-muted">
-                Scan with GCash, Maya, or any bank app
-              </p>
-            </>
-          )}
         </Reveal>
       </div>
+
+      {registry.qrCodes?.length > 0 && (
+        <Reveal className="mx-auto mt-12 max-w-5xl">
+          <div className="mx-auto grid max-w-xs gap-5 sm:max-w-none sm:grid-cols-3 sm:gap-6">
+            {registry.qrCodes.map((qr) => {
+              const isShown = !!revealed[qr.name];
+              return (
+                <div
+                  key={qr.name}
+                  className="group flex flex-col items-center rounded-2xl border border-line/60 bg-line/40 p-4 shadow-[0_18px_40px_-28px_rgba(31,58,95,0.45)] sm:p-6"
+                >
+                  <p
+                    className="font-sans text-xs uppercase tracking-[0.2em] text-gold-deep"
+                    style={qr.color ? { color: qr.color } : undefined}
+                  >
+                    {qr.name}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => toggle(qr.name)}
+                    aria-pressed={isShown}
+                    aria-label={`${isShown ? "Hide" : "Show"} ${qr.name} QR code`}
+                    className="relative mt-5 flex aspect-square w-full flex-col items-center justify-center rounded-2xl bg-white p-6 transition"
+                  >
+                    {isShown ? (
+                      <>
+                        <img
+                          src={qr.image}
+                          alt={`${qr.name} QR code for sending a gift`}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = qrPlaceholder(qr.name);
+                          }}
+                          className="h-32 w-32 object-contain sm:h-36 sm:w-36"
+                        />
+                        <span className="absolute right-3 top-3 text-muted/50 transition group-hover:text-muted">
+                          <EyeOff size={16} />
+                        </span>
+                      </>
+                    ) : (
+                      <Eye size={32} className="text-gold/70 transition group-hover:text-gold" />
+                    )}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-8 text-center font-sans text-xs uppercase tracking-[0.15em] text-muted">
+            Scan with GCash, Maya, or any bank app
+          </p>
+        </Reveal>
+      )}
     </section>
   );
 }
