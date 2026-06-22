@@ -36,7 +36,7 @@ export default function Registry() {
       </div>
 
       {registry.qrCodes?.length > 0 && (
-        <Reveal className="mx-auto mt-12 max-w-5xl">
+        <Reveal className="mx-auto mt-12 max-w-3xl">
           <div className="mx-auto grid max-w-xs gap-5 sm:max-w-none sm:grid-cols-3 sm:gap-6">
             {registry.qrCodes.map((qr) => {
               const isShown = !!revealed[qr.name];
