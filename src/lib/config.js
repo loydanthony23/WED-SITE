@@ -76,16 +76,23 @@ export const config = {
         ],
     },
 
-    // ---- Gallery (swap these for your own photos) -------------------
+    // ---- Gallery ("Moments" section) -------------------------------
+    // Temporary photos from Unsplash (free to use) so the section isn't
+    // empty. To use your own: drop files into /public and point `src` at
+    // them (e.g. "/moment-1.jpg"). The layout is a masonry grid (2
+    // columns on mobile, 3 on desktop): each photo fills its column width
+    // and keeps its own height, so varied heights look great.
+    // Recommended size: portrait, ~900 × 1100 px (≈ 9:11 ratio).
+    // Keep files under ~500 KB each (JPG/WebP) so the page stays fast.
     gallery: {
         intro: "A few of our favorite moments.",
         images: [
-            { src: "https://picsum.photos/seed/wed1/900/1100", alt: "The couple" },
-            { src: "https://picsum.photos/seed/wed2/900/1100", alt: "Laughing together" },
-            { src: "https://picsum.photos/seed/wed3/900/1100", alt: "A quiet moment" },
-            { src: "https://picsum.photos/seed/wed4/900/1100", alt: "On an adventure" },
-            { src: "https://picsum.photos/seed/wed5/900/1100", alt: "The proposal" },
-            { src: "https://picsum.photos/seed/wed6/900/1100", alt: "Just us" },
+            { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&h=1100&fit=crop", alt: "The couple" },          // 900 × 1100 px
+            { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&h=1100&fit=crop", alt: "Laughing together" },   // 900 × 1100 px
+            { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&h=1100&fit=crop", alt: "A quiet moment" },      // 900 × 1100 px
+            { src: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&h=1100&fit=crop", alt: "On an adventure" },     // 900 × 1100 px
+            { src: "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=900&h=1100&fit=crop", alt: "The proposal" },        // 900 × 1100 px
+            { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&h=1100&fit=crop", alt: "Just us" },             // 900 × 1100 px
         ],
     },
 
