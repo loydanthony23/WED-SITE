@@ -20,7 +20,7 @@ export const config = {
     // timezone offset (+08:00 = Philippine time). The *Label fields are
     // what guests actually read, so write them however you like.
     event: {
-        dateISO: "2026-09-19T15:00:00+08:00",
+        dateISO: "2026-09-19T10:30:00+08:00",
         dateLabel: "September 19, 2026",
         dayLabel: "Saturday",
         timeLabel: "10:30 in the morning",
@@ -64,11 +64,11 @@ export const config = {
         paragraphs: [
             "We first met in 2014 as college classmates. What started as casual introductions slowly turned into friendship—comfortable, effortless, and unexpectedly meaningful. Even then, there was something familiar about each other, like we were meant to stay in each other’s orbit.",
             "After graduating, life took us in different directions, but it never truly pulled us apart. Somehow, we found our way back to each other again. This second chance meant everything. We didn’t let it pass—we chose each other, fully and intentionally.",
-            "Now, after all the years, distance, and rediscovery, we’re stepping into our next chapter—one we’ve been building toward all along—and we’re so happy to share it with you., and somewhere along the way, the two of us became us.",
+            "Now, after all the years, distance, and rediscovery, we’re stepping into our next chapter—one we’ve been building toward all along—and we’re so happy to share it with you.",
             "Years, adventures, and countless cups of coffee later, we're ready for our greatest adventure yet — and we'd love for you to be there when we begin it.",
         ],
         timeline: [
-            { year: "2019", title: "How we met", text: "College classmates who slowly became close friends, without even realizing where it would lead." },
+            { year: "2014", title: "How we met", text: "College classmates who slowly became close friends, without even realizing where it would lead." },
             { year: "2022", title: "Finding our way back", text: "Life paused us for a while, but not for long. We met again, and this time, we didn’t let go." },
 
             { year: "2023", title: "Endless roads", text: "Long drives, random stops, and memories made on the road—our favorite kind of adventure." },
@@ -93,6 +93,7 @@ export const config = {
             { src: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&h=1100&fit=crop", alt: "On an adventure" },     // 900 × 1100 px
             { src: "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=900&h=1100&fit=crop", alt: "The proposal" },        // 900 × 1100 px
             { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&h=1100&fit=crop", alt: "Just us" },             // 900 × 1100 px
+            
         ],
     },
 
@@ -133,11 +134,11 @@ export const config = {
     // ---- Order of the day ------------------------------------------
     // `icon` must be one of: heart, church, glassCheers, utensils, music, camera, sparkles
     schedule: [
-        { time: "2:30 PM", title: "Guests Arrive", text: "Find your seats and settle in.", icon: "sparkles" },
-        { time: "3:00 PM", title: "Ceremony", text: "The moment we've been waiting for.", icon: "church" },
-        { time: "4:00 PM", title: "Cocktails & Photos", text: "Drinks, mingling, and snapshots.", icon: "camera" },
-        { time: "5:00 PM", title: "Reception & Dinner", text: "Eat, drink, and be married.", icon: "utensils" },
-        { time: "7:00 PM", title: "Dancing", text: "The dance floor opens — bring your moves.", icon: "music" },
+        { time: "10:00 AM", title: "Guests Arrive", text: "Find your seats and settle in.", icon: "sparkles" },
+        { time: "10:30 AM", title: "Ceremony", text: "The moment we've been waiting for.", icon: "church" },
+        { time: "11:30 AM", title: "Cocktails & Photos", text: "Drinks, mingling, and snapshots.", icon: "camera" },
+        { time: "12:00 PM", title: "Reception & Lunch", text: "Eat, drink, and be married.", icon: "utensils" },
+        { time: "2:00 PM", title: "Dancing", text: "The dance floor opens — bring your moves.", icon: "music" },
     ],
 
     // ---- Registry / Gifts -------------------------------------------
@@ -182,7 +183,7 @@ export const config = {
 
     // ---- Contact / footer ------------------------------------------
     contact: {
-        email: "loydsharah.site",
+        email: "loydmit@gmail.com",
         phone: "+63 9658306989",
     },
 };

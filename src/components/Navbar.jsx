@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { config, navLinks } from "../lib/config";
+import AddToCalendar from "./AddToCalendar";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -54,16 +55,19 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="#rsvp"
-          className={`hidden rounded-full px-5 py-2 font-sans text-xs uppercase tracking-widest transition-colors md:inline-block ${
-            onDark
-              ? "border border-white/50 text-white hover:bg-white hover:text-navy"
-              : "bg-navy text-white hover:bg-blue"
-          }`}
-        >
-          RSVP
-        </a>
+        <div className="hidden items-center gap-3 md:flex">
+          <AddToCalendar variant="navbar" onDark={onDark} align="right" />
+          <a
+            href="#rsvp"
+            className={`rounded-full px-5 py-2 font-sans text-xs uppercase tracking-widest transition-colors ${
+              onDark
+                ? "border border-white/50 text-white hover:bg-white hover:text-navy"
+                : "bg-navy text-white hover:bg-blue"
+            }`}
+          >
+            RSVP
+          </a>
+        </div>
 
         <button
           className={`transition-colors md:hidden ${
