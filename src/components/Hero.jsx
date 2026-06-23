@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { MapPin } from "lucide-react";
 import { config } from "../lib/config";
 import Countdown from "./Countdown";
+import AddToCalendar from "./AddToCalendar";
 
 export default function Hero() {
   const { couple, event, hero, welcome } = config;
@@ -109,8 +110,9 @@ export default function Hero() {
         {...reveal(0.35)}
         className="mt-7 flex flex-col items-center gap-2 font-sans text-sm tracking-widest text-white/80"
       >
-        <span className="uppercase">
+        <span className="inline-flex items-center gap-2 uppercase">
           {event.dayLabel} &middot; {event.dateLabel}
+          <AddToCalendar variant="icon" align="center" />
         </span>
         <span className="flex items-center gap-1.5">
           <MapPin size={15} className="text-gold" /> {event.cityLabel}
