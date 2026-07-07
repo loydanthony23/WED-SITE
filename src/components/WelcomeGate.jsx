@@ -8,10 +8,26 @@ const W = 360;
 const H = 240;
 const FLAP = 150; // height of the top flap / bottom pocket triangles
 
+// Guests who scan the table QR code should land straight on the photo
+// uploader — not the invitation intro. When the page is opened at the Shared
+// Moments deep link we skip the envelope gate entirely. The QR points to
+// <site>/#shared-moments; #share / #upload and ?share / ?upload also work.
+function isDirectShareEntry() {
+  if (typeof window === "undefined") return false;
+  const hash = window.location.hash.toLowerCase();
+  if (hash === "#shared-moments" || hash === "#share" || hash === "#upload") {
+    return true;
+  }
+  const q = new URLSearchParams(window.location.search);
+  return q.has("share") || q.has("upload");
+}
+
 export default function WelcomeGate() {
   const { couple, event, welcome } = config;
   const enabled = welcome?.enabled !== false;
-  const [open, setOpen] = useState(enabled);
+  // Compute once on mount so there's no flash of the gate before we skip it.
+  const [directToShare] = useState(isDirectShareEntry);
+  const [open, setOpen] = useState(enabled && !directToShare);
   const [stage, setStage] = useState("sealed"); // "sealed" | "opening"
 
   const opening = stage === "opening";
@@ -24,6 +40,27 @@ export default function WelcomeGate() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // QR / deep-link entry: the gate is skipped, so reveal the page ourselves
+  // (the hero stays hidden until it hears "wed:reveal") and jump to the
+  // uploader. We deliberately do NOT fire "wed:enter", so music stays off —
+  // a guest sharing a photo shouldn't be surprised by autoplay.
+  useEffect(() => {
+    if (!directToShare) return;
+    window.dispatchEvent(new Event("wed:reveal"));
+    const toUploader = () => {
+      document
+        .getElementById("shared-moments")
+        ?.scrollIntoView({ block: "start" });
+    };
+    // Once immediately, then again after images settle the layout above it.
+    const t1 = setTimeout(toUploader, 60);
+    const t2 = setTimeout(toUploader, 450);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [directToShare]);
 
   if (!enabled) return null;
 

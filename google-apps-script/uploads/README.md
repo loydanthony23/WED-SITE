@@ -81,7 +81,9 @@ https://your-wedding-site.com/#shared-moments
 ```
 
 Any free QR generator works (e.g. search "QR code generator"). Print it on the
-table cards. Scanning it drops guests straight onto the photo wall.
+table cards. Scanning it **skips the welcome-gate envelope** and drops guests
+straight onto the photo uploader (no music autoplay either). The shorter
+`#share` and `#upload` links behave the same way.
 
 ## Moderating photos (auto-publish)
 
