@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import OurStory from "./components/OurStory";
 import Gallery from "./components/Gallery";
+import SharedMoments from "./components/SharedMoments";
 import EventDetails from "./components/EventDetails";
 import Schedule from "./components/Schedule";
 import Registry from "./components/Registry";
@@ -21,6 +22,7 @@ export default function App() {
         <Hero />
         <OurStory />
         <Gallery />
+        <SharedMoments />
         <EventDetails />
         <Schedule />
         <Registry />
