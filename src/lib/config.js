@@ -93,8 +93,24 @@ export const config = {
             { src: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&h=1100&fit=crop", alt: "On an adventure" },     // 900 × 1100 px
             { src: "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=900&h=1100&fit=crop", alt: "The proposal" },        // 900 × 1100 px
             { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&h=1100&fit=crop", alt: "Just us" },             // 900 × 1100 px
-            
+
         ],
+    },
+
+    // ---- Shared Moments (guest photo wall) -------------------------
+    // Guests scan a QR code at their table, snap or pick photos, and they
+    // appear in the live gallery below — no login, no app. Uploads are saved
+    // straight to your Google Drive by the Apps Script in
+    // `google-apps-script/uploads/` (see that folder's README to set it up,
+    // then put its /exec URL in `.env` as VITE_UPLOAD_ENDPOINT).
+    sharedMoments: {
+        kicker: "From Everyone",
+        title: "Shared Moments",
+        intro: "Caught a candid, a happy tear, or the dance floor going off? Share it here and watch our day come to life through your eyes.",
+        // Guardrails (also enforced on the server).
+        maxFiles: 10,        // photos per upload batch
+        maxFileSizeMB: 15,   // per photo
+        // The QR code on the tables should point to: <your-site-url>/#shared-moments
     },
 
     // ---- Event details ---------------------------------------------
@@ -191,6 +207,7 @@ export const config = {
 // Navigation links (anchor ids must match section ids in App.jsx)
 export const navLinks = [
     { label: "Story", href: "#story" },
+    { label: "Share", href: "#shared-moments" },
     { label: "Details", href: "#details" },
     { label: "Schedule", href: "#schedule" },
     { label: "FAQ", href: "#faq" },
