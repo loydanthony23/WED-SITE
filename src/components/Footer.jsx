@@ -29,7 +29,7 @@ export default function Footer() {
           <Phone size={16} /> {contact.phone}
         </a>
       </div>
-
+{/* sdgggsgd */}
       <p className="mt-10 font-sans text-xs text-white/40">
         With love, {couple.partnerA} &amp; {couple.partnerB}
       </p>

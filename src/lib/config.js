@@ -111,6 +111,8 @@ export const config = {
         maxFiles: 10,        // photos per upload batch
         maxFileSizeMB: 15,   // per photo
         // The QR code on the tables should point to: <your-site-url>/#shared-moments
+        // Opening that link skips the welcome gate and lands guests straight
+        // on the uploader (see WelcomeGate.jsx). #share / #upload also work.
     },
 
     // ---- Event details ---------------------------------------------
