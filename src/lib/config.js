@@ -32,7 +32,7 @@ export const config = {
         kicker: "Together with their families",
         subline: "invite you to witness and celebrate the beginning of their forever",
         // Optional hero photo URL. Leave "" for a clean, type-only hero.
-        image: "/aip.png",
+        image: "/hero-raw-1.png",
     },
 
     // ---- Welcome gate ----------------------------------------------
@@ -87,12 +87,12 @@ export const config = {
     gallery: {
         intro: "A few of our favorite moments.",
         images: [
-            { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&h=1100&fit=crop", alt: "The couple" },          // 900 × 1100 px
-            { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&h=1100&fit=crop", alt: "Laughing together" },   // 900 × 1100 px
-            { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&h=1100&fit=crop", alt: "A quiet moment" },      // 900 × 1100 px
-            { src: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&h=1100&fit=crop", alt: "On an adventure" },     // 900 × 1100 px
-            { src: "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=900&h=1100&fit=crop", alt: "The proposal" },        // 900 × 1100 px
-            { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&h=1100&fit=crop", alt: "Just us" },             // 900 × 1100 px
+            { src: "/900x1100/1.png", alt: "The couple" }, // 900 × 1100 px
+            { src: "/900x1100/2.png", alt: "Laughing together" }, // 900 × 1100 px
+            { src: "/900x1100/3.png", alt: "A quiet moment" }, // 900 × 1100 px
+            { src: "/900x1100/4.png", alt: "On an adventure" }, // 900 × 1100 px
+            { src: "/900x1100/5.png", alt: "The proposal" }, // 900 × 1100 px
+            { src: "/900x1100/6.png", alt: "Just us" }, // 900 × 1100 px
 
         ],
     },
@@ -108,8 +108,8 @@ export const config = {
         title: "Shared Moments",
         intro: "Caught a candid, a happy tear, or the dance floor going off? Share it here and watch our day come to life through your eyes.",
         // Guardrails (also enforced on the server).
-        maxFiles: 10,        // photos per upload batch
-        maxFileSizeMB: 15,   // per photo
+        maxFiles: 10, // photos per upload batch
+        maxFileSizeMB: 15, // per photo
         // The QR code on the tables should point to: <your-site-url>/#shared-moments
         // Opening that link skips the welcome gate and lands guests straight
         // on the uploader (see WelcomeGate.jsx). #share / #upload also work.
