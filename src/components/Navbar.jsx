@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Upload } from "lucide-react";
 import { config, navLinks } from "../lib/config";
 import AddToCalendar from "./AddToCalendar";
+import { openUploadModal } from "../lib/shareEntry";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -56,6 +57,17 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-3 md:flex">
+          <button
+            type="button"
+            onClick={openUploadModal}
+            className={`inline-flex items-center gap-2 rounded-full px-5 py-2 font-sans text-xs uppercase tracking-widest transition-colors ${
+              onDark
+                ? "text-white/85 hover:text-gold"
+                : "text-ink/80 hover:text-gold-deep"
+            }`}
+          >
+            <Upload size={15} /> Share a Photo
+          </button>
           <AddToCalendar variant="navbar" onDark={onDark} align="right" />
           <a
             href="#rsvp"
@@ -95,6 +107,18 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  openUploadModal();
+                }}
+                className="flex w-full items-center gap-2 py-3 font-sans text-sm uppercase tracking-widest text-gold-deep"
+              >
+                <Upload size={15} /> Share a Photo
+              </button>
+            </li>
           </ul>
         </div>
       )}

@@ -11,11 +11,13 @@ import Rsvp from "./components/Rsvp";
 import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
 import WelcomeGate from "./components/WelcomeGate";
+import UploadModal from "./components/moments/UploadModal";
 
 export default function App() {
   return (
     <div id="top" className="overflow-x-clip">
       <WelcomeGate />
+      <UploadModal />
       <MusicPlayer />
       <Navbar />
       <main>

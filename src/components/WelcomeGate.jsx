@@ -2,25 +2,12 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Music2 } from "lucide-react";
 import { config } from "../lib/config";
+import { isDirectShareEntry } from "../lib/shareEntry";
 
 // Envelope geometry (px). The whole thing is scaled responsively below.
 const W = 360;
 const H = 240;
 const FLAP = 150; // height of the top flap / bottom pocket triangles
-
-// Guests who scan the table QR code should land straight on the photo
-// uploader — not the invitation intro. When the page is opened at the Shared
-// Moments deep link we skip the envelope gate entirely. The QR points to
-// <site>/#shared-moments; #share / #upload and ?share / ?upload also work.
-function isDirectShareEntry() {
-  if (typeof window === "undefined") return false;
-  const hash = window.location.hash.toLowerCase();
-  if (hash === "#shared-moments" || hash === "#share" || hash === "#upload") {
-    return true;
-  }
-  const q = new URLSearchParams(window.location.search);
-  return q.has("share") || q.has("upload");
-}
 
 export default function WelcomeGate() {
   const { couple, event, welcome } = config;
@@ -42,20 +29,22 @@ export default function WelcomeGate() {
   }, [open]);
 
   // QR / deep-link entry: the gate is skipped, so reveal the page ourselves
-  // (the hero stays hidden until it hears "wed:reveal") and jump to the
-  // uploader. We deliberately do NOT fire "wed:enter", so music stays off —
-  // a guest sharing a photo shouldn't be surprised by autoplay.
+  // (the hero stays hidden until it hears "wed:reveal"). The UploadModal opens
+  // itself on this same deep link, so we just position the page at the gallery
+  // — that's what a guest sees once they close the uploader. We deliberately
+  // do NOT fire "wed:enter", so music stays off — a guest sharing a photo
+  // shouldn't be surprised by autoplay.
   useEffect(() => {
     if (!directToShare) return;
     window.dispatchEvent(new Event("wed:reveal"));
-    const toUploader = () => {
+    const toGallery = () => {
       document
         .getElementById("shared-moments")
         ?.scrollIntoView({ block: "start" });
     };
     // Once immediately, then again after images settle the layout above it.
-    const t1 = setTimeout(toUploader, 60);
-    const t2 = setTimeout(toUploader, 450);
+    const t1 = setTimeout(toGallery, 60);
+    const t2 = setTimeout(toGallery, 450);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
