@@ -44,12 +44,23 @@ export default function Hero() {
         transition={{ duration: 1.3, ease: "easeOut" }}
       >
         {hero.image && (
-          <img
-            src={hero.image}
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full object-cover"
-          />
+          <picture>
+            {/* Phones get a portrait crop so the wide desktop shot isn't
+                awkwardly cropped to its empty centre. Falls back to `image`
+                when no mobile version is set. */}
+            {hero.imageMobile && (
+              <source
+                media="(max-width: 640px)"
+                srcSet={hero.imageMobile}
+              />
+            )}
+            <img
+              src={hero.image}
+              alt=""
+              aria-hidden="true"
+              className="h-full w-full object-cover"
+            />
+          </picture>
         )}
         {/* overall wash for baseline legibility */}
         <div className="absolute inset-0 bg-black/45" />

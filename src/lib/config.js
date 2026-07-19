@@ -31,8 +31,14 @@ export const config = {
     hero: {
         kicker: "Together with their families",
         subline: "invite you to witness and celebrate the beginning of their forever",
-        // Optional hero photo URL. Leave "" for a clean, type-only hero.
+        // Hero photos. `image` is the wide desktop shot. `imageMobile` is a
+        // portrait (9:16) version shown on phones — a landscape photo gets
+        // badly cropped on a tall screen, so give phones their own framing.
+        // Recommended mobile export: 1080 × 1920 JPG/WebP, subjects kept in
+        // the centre band. Leave `imageMobile` as "" to fall back to `image`
+        // on mobile too. Leave `image` "" for a clean, type-only hero.
         image: "/hero-raw-1.png",
+        imageMobile: "/hero-mobile.jpg",
     },
 
     // ---- Welcome gate ----------------------------------------------
