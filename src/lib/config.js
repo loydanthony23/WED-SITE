@@ -92,7 +92,7 @@ export const config = {
             { src: "/900x1100/3.png", alt: "A quiet moment" }, // 900 × 1100 px
             { src: "/900x1100/4.png", alt: "On an adventure" }, // 900 × 1100 px
             { src: "/900x1100/5.png", alt: "The proposal" }, // 900 × 1100 px
-            { src: "/900x1100/6.png", alt: "Just us" }, // 900 × 1100 px
+            { src: "/900x1100/6.png", alt: "be" }, // 900 × 1100 px
 
         ],
     },
