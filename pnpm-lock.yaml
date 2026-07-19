@@ -10,10 +10,10 @@ importers:
     dependencies:
       lucide-react:
         specifier: ^1.18.0
-        version: 1.25.0(react@19.2.7)
+        version: 1.21.0(react@19.2.7)
       motion:
         specifier: ^12.40.0
-        version: 12.42.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 12.40.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react:
         specifier: ^19.2.7
         version: 19.2.7
