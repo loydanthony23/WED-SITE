@@ -209,7 +209,7 @@ export const config = {
 // Navigation links (anchor ids must match section ids in App.jsx)
 export const navLinks = [
     { label: "Story", href: "#story" },
-    { label: "Share", href: "#shared-moments" },
+    { label: "Gallery", href: "#shared-moments" },
     { label: "Details", href: "#details" },
     { label: "Schedule", href: "#schedule" },
     { label: "FAQ", href: "#faq" },
