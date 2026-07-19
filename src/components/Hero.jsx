@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { MapPin } from "lucide-react";
 import { config } from "../lib/config";
+import { isDirectShareEntry } from "../lib/shareEntry";
 import Countdown from "./Countdown";
 import AddToCalendar from "./AddToCalendar";
 
 export default function Hero() {
   const { couple, event, hero, welcome } = config;
 
-  // Stay hidden until the welcome gate is opened — then everything fades
-  // in slowly. If the gate is disabled, reveal right away on load.
+  // Stay hidden until the welcome gate is opened — then everything fades in
+  // slowly. Reveal right away when the gate is disabled, or on a QR / deep-link
+  // entry: the gate is skipped there and WelcomeGate's "wed:reveal" fires
+  // before this listener mounts, so we can't rely on hearing it.
   const [revealed, setRevealed] = useState(
-    () => welcome?.enabled === false
+    () => welcome?.enabled === false || isDirectShareEntry()
   );
 
   useEffect(() => {
