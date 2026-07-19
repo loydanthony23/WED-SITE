@@ -272,7 +272,7 @@ export default function Uploader({ onUploaded, onViewGallery }) {
             onClick={() => pickRef.current?.click()}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 font-sans text-xs uppercase tracking-[0.2em] text-white transition-colors hover:bg-blue"
           >
-            <ImagePlus size={16} /> Choose photos
+            <ImagePlus size={16} /> Select
           </button>
           <button
             type="button"

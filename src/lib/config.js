@@ -38,7 +38,7 @@ export const config = {
         // the centre band. Leave `imageMobile` as "" to fall back to `image`
         // on mobile too. Leave `image` "" for a clean, type-only hero.
         image: "/hero-raw-1.png",
-        imageMobile: "/hero-mobile.jpg",
+        imageMobile: "/hero-mobile.webp",
     },
 
     // ---- Welcome gate ----------------------------------------------
