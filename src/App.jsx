@@ -5,6 +5,7 @@ import Gallery from "./components/Gallery";
 import SharedMoments from "./components/SharedMoments";
 import EventDetails from "./components/EventDetails";
 import Schedule from "./components/Schedule";
+import Entourage from "./components/Entourage";
 import Registry from "./components/Registry";
 import Faq from "./components/Faq";
 import Rsvp from "./components/Rsvp";
@@ -27,6 +28,7 @@ export default function App() {
         <SharedMoments />
         <EventDetails />
         <Schedule />
+        <Entourage />
         <Registry />
         <Faq />
         <Rsvp />

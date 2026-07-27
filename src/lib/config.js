@@ -59,7 +59,7 @@ export const config = {
     // click/scroll/keypress. Guests can mute via the floating button.
     // Set `src: ""` to turn music off entirely.
     music: {
-        src: "/musicbg2.mp3",
+        src: "/musicbg.mp3",
         autoPlay: false,
         volume: 0.4,
     },
@@ -165,6 +165,133 @@ export const config = {
         { time: "2:00 PM", title: "Dancing", text: "The dance floor opens — bring your moves.", icon: "music" },
     ],
 
+    // ---- Entourage / Wedding Party ---------------------------------
+    // Everything here is data — edit names freely, add or remove groups.
+    // Each group renders with one of three layouts:
+    //   "columns" (default) — two mirrored columns, his side | her side.
+    //                         `pairs: [["left name", "right name"], …]`
+    //                         Use "" for a blank cell on one side.
+    //   "roles"             — a "task → name" list, e.g. ring/coin/bible.
+    //                         `roles: [{ label: "…", name: "…" }, …]`
+    //   "list"              — plain centered names. `names: ["…", …]`
+    // Optional per group: `title` (the small gold heading above it),
+    // `leftLabel` / `rightLabel` (column captions), and `emphasis: true`
+    // to print the names larger (used for the couple, parents, principal
+    // sponsors' best man/maid, and the little groom & bride).
+    entourage: {
+        kicker: "With Us on Our Day",
+        title: "The Wedding Party",
+        intro: "The people who have loved, guided, and walked with us — standing beside us as we say our vows.",
+        groups: [{
+                leftLabel: "Groom",
+                rightLabel: "Bride",
+                emphasis: true,
+                pairs: [
+                    ["Loyd Anthony Toriano Gonzales", "Sharah Mae Calugas Dagupan"]
+                ],
+            },
+            {
+                leftLabel: "Parents of the Groom",
+                rightLabel: "Parents of the Bride",
+                emphasis: true,
+                pairs: [
+                    ["Lucia Anaba Toriano", "Dionesio G. Dagupan"],
+                    ["", "Criselda T. Calugas"],
+                ],
+            },
+            {
+                title: "Life God Parents",
+                pairs: [
+                    ["Dr. Joy M. Mirasol", "Dr. Felix S. Mirasol"],
+                    ["Dr. Carina Joane V. Barroso", "Ian Barroso"],
+                    ["Dr. Jiemalyn B. Paulican", "Orlando John Paulican"],
+                    ["Dr. Joan M. Recente", "Charlemagne Recente"],
+                    ["Lourie Jane Tantoy", "Dr. Omar A. Tantoy"],
+                    ["Dr. Helen P. Garcia", "Jamer P. Garcia"],
+                    ["Marlyn D. Asapon", "Cesar T. Asapon"],
+                    ["Gemma D. Chanpokin", "Dr. Albert A. Villanca"],
+                    ["Gemma Fernandez", "Dr. Rodello D. Pepito"],
+                    ["Erma Gocotano", "Dr. Zenas Paloma"],
+                    ["Elizabeth V. Cutamora", "Cresencio P. Cutamora"],
+                    ["Dr. Jovelyn M. Lapates", "Dr. Lesley C. Lubos"],
+                ],
+            },
+            {
+                title: "To Guide Us on Our Way Ahead",
+                leftLabel: "Groom's Best",
+                rightLabel: "Bride's Best",
+                emphasis: true,
+                pairs: [
+                    ["Leo June T. Gonzales", "Angel Hope Calugas"]
+                ],
+            },
+            {
+                leftLabel: "His Best Circle",
+                rightLabel: "Her Best Circle",
+                pairs: [
+                    ["Gerald John Hiponia", "Abbegail Calugas"],
+                    ["Carl Cedrick Acaso", "Johara Divine Pelayo"],
+                    ["Wystan Neil Leswe", "Angelie Arcillas"],
+                    ["Earnie Actub", "Leah Joy Gonzales"],
+                    ["Argie Ucab", "Rayanne Cruz"],
+                    ["Jhoeshrex Dagupan", "Jusimie Caser"],
+                ],
+            },
+            {
+                title: "To Light Our Path",
+                pairs: [
+                    ["Johnten Magdale", "Melgen L. Magdale"]
+                ],
+            },
+            {
+                title: "To Clothe Us as One",
+                pairs: [
+                    ["Joe-Ed C. Dagupan", "Sheena S. Dagupan"]
+                ],
+            },
+            {
+                title: "To Bind Us Together",
+                pairs: [
+                    ["Dionecris C. Dagupan", "Cristy Jane C. Dagupan"]
+                ],
+            },
+            {
+                title: "Keepers of Love Symbols",
+                layout: "roles",
+                roles: [
+                    { label: "To Carry Our Symbol of Love", name: "Jon Marc D. Acaso" },
+                    { label: "To Carry Our Symbol of Faith", name: "Dione Keith Chester C. Dagupan" },
+                    { label: "To Carry Our Symbol of Blessings", name: "Jhoekyle S. Dagupan" },
+                ],
+            },
+            {
+                title: "To Shower Our Path with Flowers",
+                pairs: [
+                    ["Johara Faith C. Pelayo", "Dionne Aiamarie Faith C. Dagupan"]
+                ],
+            },
+            {
+                title: "To Remind Us to Keep Our Love Forever Young",
+                leftLabel: "Little Groom",
+                rightLabel: "Little Bride",
+                emphasis: true,
+                pairs: [
+                    ["Jhester Sheed S. Dagupan", "Amari Brielle D. Acaso"]
+                ],
+            },
+            {
+                title: "Banner Bearer",
+                layout: "list",
+                names: ["Renz Dexter Gonzales"],
+            },
+            {
+                title: "Program Host",
+                layout: "list",
+                names: ["Dennis Gonzales"],
+            },
+        ],
+    },
+
     // ---- Registry / Gifts -------------------------------------------
     registry: {
         note: "Your presence is the only present we need. But if you wish to bless us with a gift, you may send it through any of the QR codes below.",
@@ -218,6 +345,7 @@ export const navLinks = [
     { label: "Gallery", href: "#shared-moments" },
     { label: "Details", href: "#details" },
     { label: "Schedule", href: "#schedule" },
+    { label: "Entourage", href: "#entourage" },
     { label: "FAQ", href: "#faq" },
     { label: "RSVP", href: "#rsvp" },
 ];
