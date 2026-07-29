@@ -37,7 +37,7 @@ export const config = {
         // Recommended mobile export: 1080 × 1920 JPG/WebP, subjects kept in
         // the centre band. Leave `imageMobile` as "" to fall back to `image`
         // on mobile too. Leave `image` "" for a clean, type-only hero.
-        image: "/hero-raw-1.png",
+        image: "/hero-raw-1.webp",
         imageMobile: "/hero-mobile.webp",
     },
 
