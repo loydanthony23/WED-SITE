@@ -74,7 +74,7 @@ export const config = {
             "Years, adventures, and countless cups of coffee later, we're ready for our greatest adventure yet — and we'd love for you to be there when we begin it.",
         ],
         timeline: [
-            { year: "2014", title: "How we met", text: "College classmates who slowly became close friends, without even realizing where it would lead." },
+            { year: "2015", title: "How we met", text: "College classmates who slowly became close friends, without even realizing where it would lead." },
             { year: "2022", title: "Finding our way back", text: "Life paused us for a while, but not for long. We met again, and this time, we didn’t let go." },
 
             { year: "2023", title: "Endless roads", text: "Long drives, random stops, and memories made on the road—our favorite kind of adventure." },
@@ -125,14 +125,14 @@ export const config = {
     details: {
         ceremony: {
             title: "The Ceremony",
-            time: "09:00 AM",
+            time: "10:00 AM",
             venue: "Santo Niño Parish Church",
             address: "Poblacion, Cabanglasan, Bukidnon",
             mapUrl: "https://maps.app.goo.gl/V4n26SL3f2NYFMSUA",
         },
         reception: {
             title: "The Reception",
-            time: "11:00 AM",
+            time: "12:00 PM",
             venue: "MMAD Lodging and Catering Services",
             address: "Poblacion, Cabanglasan, Bukidnon",
             mapUrl: "https://maps.app.goo.gl/fFrcDMM8V6YY9bNw7",
@@ -158,11 +158,11 @@ export const config = {
     // ---- Order of the day ------------------------------------------
     // `icon` must be one of: heart, church, glassCheers, utensils, music, camera, sparkles
     schedule: [
-        { time: "08:30 AM", title: "Guests Arrive", text: "Find your seats and settle in.", icon: "sparkles" },
-        { time: "09:00 AM", title: "Ceremony", text: "The moment we've been waiting for.", icon: "church" },
-        { time: "11:30 AM", title: "Cocktails & Photos", text: "Drinks, mingling, and snapshots.", icon: "camera" },
+        { time: "09:30 AM", title: "Guests Arrive", text: "Find your seats and settle in.", icon: "sparkles" },
+        { time: "10:00 AM", title: "Ceremony", text: "The moment we've been waiting for.", icon: "church" },
+        { time: "11:00 AM", title: "Cocktails & Photos", text: "Drinks, mingling, and snapshots.", icon: "camera" },
         { time: "12:00 PM", title: "Reception & Lunch", text: "Eat, drink, and be married.", icon: "utensils" },
-        { time: "2:00 PM", title: "Dancing", text: "The dance floor opens — bring your moves.", icon: "music" },
+        { time: "01:00 PM", title: "Dancing", text: "The dance floor opens — bring your moves.", icon: "music" },
     ],
 
     // ---- Entourage / Wedding Party ---------------------------------
@@ -191,12 +191,12 @@ export const config = {
                 ],
             },
             {
-                leftLabel: "Parents of the Groom",
+                leftLabel: "Parent of the Groom",
                 rightLabel: "Parents of the Bride",
                 emphasis: true,
                 pairs: [
-                    ["Lucia Anaba Toriano", "Dionesio G. Dagupan"],
-                    ["", "Criselda T. Calugas"],
+                    ["Lucia T. Gonzales", "Dionesio G. Dagupan"],
+                    ["", "Criselda C. Dagupan"],
                 ],
             },
             {
@@ -240,13 +240,13 @@ export const config = {
             {
                 title: "To Light Our Path",
                 pairs: [
-                    ["Johnten Magdale", "Melgen L. Magdale"]
+                    ["Johnten Magdale", "Melgen Khryztel L. Magdale"]
                 ],
             },
             {
                 title: "To Clothe Us as One",
                 pairs: [
-                    ["Joe-Ed C. Dagupan", "Sheena S. Dagupan"]
+                    ["Joe-Ed C. Dagupan", "Sheena Jane S. Dagupan"]
                 ],
             },
             {
