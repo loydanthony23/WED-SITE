@@ -14,12 +14,12 @@ function qrPlaceholder(name) {
 
 export default function Registry() {
   const { registry } = config;
-  // Tracks which QR codes are revealed. Hidden by default so the codes only
-  // show when a guest taps the eye icon for that card.
-  const [revealed, setRevealed] = useState({});
+  // Tracks which QR codes a guest has hidden. Shown by default so the codes
+  // are scannable straight away; tapping the card tucks one away.
+  const [hidden, setHidden] = useState({});
 
   const toggle = (name) =>
-    setRevealed((prev) => ({ ...prev, [name]: !prev[name] }));
+    setHidden((prev) => ({ ...prev, [name]: !prev[name] }));
 
   return (
     <section id="registry" className="section-pad bg-paper">
@@ -39,7 +39,7 @@ export default function Registry() {
         <Reveal className="mx-auto mt-12 max-w-3xl">
           <div className="mx-auto grid max-w-xs gap-5 sm:max-w-none sm:grid-cols-3 sm:gap-6">
             {registry.qrCodes.map((qr) => {
-              const isShown = !!revealed[qr.name];
+              const isShown = !hidden[qr.name];
               return (
                 <div
                   key={qr.name}
