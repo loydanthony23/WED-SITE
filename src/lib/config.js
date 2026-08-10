@@ -285,9 +285,9 @@ export const config = {
                 names: ["Renz Dexter Gonzales"],
             },
             {
-                title: "Program Host",
+                title: "Presider",
                 layout: "list",
-                names: ["Dennis Gonzales"],
+                names: ["Rev. Fr. Demetrio G. Berondo Jr., PhD"],
             },
         ],
     },
