@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
 import { config } from "../lib/config";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
@@ -10,12 +10,18 @@ export default function Gallery() {
   const images = gallery.images;
   // Index of the photo shown fullscreen, or null when the lightbox is closed.
   const [active, setActive] = useState(null);
+  // Extra photos beyond `previewCount` stay hidden behind the "View more" button.
+  const [expanded, setExpanded] = useState(false);
+
+  const previewCount = gallery.previewCount || images?.length || 0;
+  const hasMore = (images?.length || 0) > previewCount;
+  const visible = hasMore && !expanded ? images.slice(0, previewCount) : images;
 
   const isOpen = active !== null;
   const open = (i) => setActive(i);
   const close = () => setActive(null);
-  const prev = () => setActive((i) => (i - 1 + images.length) % images.length);
-  const next = () => setActive((i) => (i + 1) % images.length);
+  const prev = () => setActive((i) => (i - 1 + visible.length) % visible.length);
+  const next = () => setActive((i) => (i + 1) % visible.length);
 
   // Keyboard controls while the lightbox is open.
   useEffect(() => {
@@ -40,9 +46,9 @@ export default function Gallery() {
         </Reveal>
 
         <div className="mt-12 columns-2 gap-3 sm:columns-3 sm:gap-4">
-          {images.map((img, i) => (
+          {visible.map((img, i) => (
             <Reveal
-              key={i}
+              key={img.src + i}
               delay={(i % 3) * 0.05}
               className="mb-3 break-inside-avoid sm:mb-4"
             >
@@ -62,6 +68,23 @@ export default function Gallery() {
             </Reveal>
           ))}
         </div>
+
+        {hasMore && (
+          <Reveal className="mt-10 text-center">
+            <button
+              type="button"
+              onClick={() => {
+                close();
+                setExpanded((v) => !v);
+              }}
+              aria-expanded={expanded}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 font-sans text-xs uppercase tracking-[0.2em] text-navy transition-colors hover:bg-gold-deep hover:text-white"
+            >
+              {expanded ? "Show less" : "View more"}
+              {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+          </Reveal>
+        )}
       </div>
 
       {/* Fullscreen lightbox */}
@@ -83,7 +106,7 @@ export default function Gallery() {
               <X size={20} />
             </button>
 
-            {images.length > 1 && (
+            {visible.length > 1 && (
               <>
                 <button
                   type="button"
@@ -113,8 +136,8 @@ export default function Gallery() {
             <AnimatePresence mode="wait">
               <motion.img
                 key={active}
-                src={images[active].src}
-                alt={images[active].alt}
+                src={visible[active].src}
+                alt={visible[active].alt}
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
