@@ -92,13 +92,30 @@ export const config = {
     // Keep files under ~500 KB each (JPG/WebP) so the page stays fast.
     gallery: {
         intro: "A few of our favorite moments.",
+        // How many photos show before the "View more" button. Any extras in
+        // `images` below stay hidden until a guest taps it. Set this to 0 (or
+        // higher than the photo count) to always show everything at once.
+        previewCount: 6,
         images: [
             { src: "/900x1100/1.png", alt: "The couple" }, // 900 × 1100 px
             { src: "/900x1100/2.png", alt: "Laughing together" }, // 900 × 1100 px
-            { src: "/900x1100/3.png", alt: "A quiet moment" }, // 900 × 1100 px
+            { src: "/900x1100/19.webp", alt: "A quiet moment" }, // 900 × 1100 px
             { src: "/900x1100/4.png", alt: "On an adventure" }, // 900 × 1100 px
             { src: "/900x1100/5.png", alt: "The proposal" }, // 900 × 1100 px
-            { src: "/900x1100/6.png", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/20.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/7.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/8.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/9.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/10.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/11.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/12.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/13.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/14.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/15.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/16.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/17.webp", alt: "be" }, // 900 × 1100 px
+            { src: "/900x1100/18.webp", alt: "be" }, // 900 × 1100 px
+
 
         ],
     },
