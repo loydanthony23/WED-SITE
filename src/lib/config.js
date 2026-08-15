@@ -68,7 +68,7 @@ export const config = {
     story: {
         intro: "Every love story is beautiful, but ours is our favorite. Here's a little of how we got here.",
         paragraphs: [
-            "We first met in 2014 as college classmates. What started as casual introductions slowly turned into friendship—comfortable, effortless, and unexpectedly meaningful. Even then, there was something familiar about each other, like we were meant to stay in each other’s orbit.",
+            "We first met in 2015 as college classmates. What started as casual introductions slowly turned into friendship—comfortable, effortless, and unexpectedly meaningful. Even then, there was something familiar about each other, like we were meant to stay in each other’s orbit.",
             "After graduating, life took us in different directions, but it never truly pulled us apart. Somehow, we found our way back to each other again. This second chance meant everything. We didn’t let it pass—we chose each other, fully and intentionally.",
             "Now, after all the years, distance, and rediscovery, we’re stepping into our next chapter—one we’ve been building toward all along—and we’re so happy to share it with you.",
             "Years, adventures, and countless cups of coffee later, we're ready for our greatest adventure yet — and we'd love for you to be there when we begin it.",
