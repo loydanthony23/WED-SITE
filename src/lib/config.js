@@ -249,7 +249,7 @@ export const config = {
                     ["Gerald John Hiponia", "Abbegail Calugas"],
                     ["Carl Cedrick Acaso", "Johara Divine Pelayo"],
                     ["Wystan Neil Leswe", "Angelie Arcillas"],
-                    ["Earnie Actub", "Leah Joy Gonzales"],
+                    ["Earnie Actub", "Nichole Ashley Gomez"],
                     ["Argie Ucab", "Rayanne Cruz"],
                     ["Jhoeshrex Dagupan", "Jusimie Caser"],
                 ],
