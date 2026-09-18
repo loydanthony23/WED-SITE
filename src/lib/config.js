@@ -343,7 +343,10 @@ export const config = {
     // },
 
     // ---- RSVP -------------------------------------------------------
+    // Set `enabled: false` to close RSVPs: the form section, the nav link,
+    // and the RSVP buttons in the navbar and hero are all hidden.
     rsvp: {
+        enabled: false,
         deadline: "September 1, 2026",
         mealOptions: ["Chicken", "Beef", "Fish", "Vegetarian"],
         maxPartySize: 6,
@@ -364,5 +367,5 @@ export const navLinks = [
     { label: "Schedule", href: "#schedule" },
     { label: "Entourage", href: "#entourage" },
     { label: "FAQ", href: "#faq" },
-    { label: "RSVP", href: "#rsvp" },
+    ...(config.rsvp.enabled ? [{ label: "RSVP", href: "#rsvp" }] : []),
 ];
