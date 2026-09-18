@@ -141,12 +141,14 @@ export default function Hero() {
         {...reveal(0.65)}
         className="mt-12 flex flex-wrap items-center justify-center gap-4"
       >
-        <a
-          href="#rsvp"
-          className="inline-block min-w-48 rounded-full bg-gold px-9 py-3.5 text-center font-sans text-xs uppercase tracking-[0.2em] text-navy shadow-sm transition-colors hover:bg-gold-deep hover:text-white"
-        >
-          RSVP
-        </a>
+        {config.rsvp.enabled && (
+          <a
+            href="#rsvp"
+            className="inline-block min-w-48 rounded-full bg-gold px-9 py-3.5 text-center font-sans text-xs uppercase tracking-[0.2em] text-navy shadow-sm transition-colors hover:bg-gold-deep hover:text-white"
+          >
+            RSVP
+          </a>
+        )}
         <a
           href="#story"
           className="inline-block min-w-48 rounded-full border border-white/60 px-9 py-3.5 text-center font-sans text-xs uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-navy"

@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
 import WelcomeGate from "./components/WelcomeGate";
 import UploadModal from "./components/moments/UploadModal";
+import { config } from "./lib/config";
 
 export default function App() {
   return (
@@ -31,7 +32,7 @@ export default function App() {
         <Entourage />
         <Registry />
         <Faq />
-        <Rsvp />
+        {config.rsvp.enabled && <Rsvp />}
       </main>
       <Footer />
     </div>

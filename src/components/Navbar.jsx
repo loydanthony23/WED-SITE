@@ -69,16 +69,18 @@ export default function Navbar() {
             <Upload size={15} /> Share a Photo
           </button>
           <AddToCalendar variant="navbar" onDark={onDark} align="right" />
-          <a
-            href="#rsvp"
-            className={`rounded-full px-5 py-2 font-sans text-xs uppercase tracking-widest transition-colors ${
-              onDark
-                ? "border border-white/50 text-white hover:bg-white hover:text-navy"
-                : "bg-navy text-white hover:bg-blue"
-            }`}
-          >
-            RSVP
-          </a>
+          {config.rsvp.enabled && (
+            <a
+              href="#rsvp"
+              className={`rounded-full px-5 py-2 font-sans text-xs uppercase tracking-widest transition-colors ${
+                onDark
+                  ? "border border-white/50 text-white hover:bg-white hover:text-navy"
+                  : "bg-navy text-white hover:bg-blue"
+              }`}
+            >
+              RSVP
+            </a>
+          )}
         </div>
 
         <button
